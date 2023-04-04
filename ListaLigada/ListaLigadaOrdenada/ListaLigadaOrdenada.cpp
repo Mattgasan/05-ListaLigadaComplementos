@@ -129,12 +129,25 @@ void inserirElemento()
 	{
 		primeiro = novo;
 	}
+
+		else if (novo->valor < primeiro->valor)
+		{
+		NO* aux = primeiro;
+		primeiro = novo;
+		primeiro->prox = aux;
+		}
+
 	else
 	{
-		// procura o final da lista
+		// tipo de repetidor
 		NO* aux = primeiro;
 		while (aux->prox != NULL) {
-			aux = aux->prox;
+			if (aux->prox->valor > novo->valor)
+			{
+				break;
+			}
+
+			aux = aux->prox;			//confere o próximo de um em um até chegar em um que seja maior que o novo
 		}
 		aux->prox = novo;
 	}
