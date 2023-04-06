@@ -70,7 +70,7 @@ void menu()
 
 void inicializar()
 {
-	// se a lista já possuir elementos
+	// se a lista jÃ¡ possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -112,6 +112,7 @@ void exibirElementos()
 	}
 }
 
+
 void inserirElemento()
 {
 	// aloca memoria dinamicamente para o novo elemento
@@ -147,7 +148,7 @@ void inserirElemento()
 				break;
 			}
 
-			aux = aux->prox;			//confere o próximo de um em um até chegar em um que seja maior que o novo
+			aux = aux->prox;			//percorre a lista
 		}
 		aux->prox = novo;
 	}
@@ -155,12 +156,56 @@ void inserirElemento()
 
 void excluirElemento()
 {
+	if (primeiro == NULL) {
+		cout << "A lista estÃ¡ vazia \n";
+		return;
+	}
 
+	else {
+		int numero;
+		cout << "Digite o numero a ser excluido: \n";
+		cin >> (numero);
+
+		if (numero == primeiro->valor) {
+			primeiro = primeiro->prox;
+			cout << "O primeiro Elemento foi apagado. \n";
+		}
+		else {
+
+			NO* aux = primeiro;
+			while (aux->prox != NULL) {
+				if (aux->prox->valor == numero)
+				{
+					aux->prox = aux->prox->prox;
+					cout << "O Elemento foi apagado. \n";
+					break;
+				}
+				aux = aux->prox;
+			}
+		}
+	}
 }
-
 void buscarElemento()
 {
+	if (primeiro == NULL) {
+		cout << "A lista estÃ¡ vazia. \n";
+		return;
+	}
+	else {
 
+		int numero;
+		cout << "Digite o nÃºmero a ser encontrado: \n";
+		cin >> numero;
+
+		NO* aux = primeiro;
+		while (aux->prox != NULL) {
+			if (aux->valor == numero)
+			{ 
+				cout << "O nÃºmero foi encontrado. \n";
+				break;
+			}
+			aux = aux->prox;
+		}
+		
+	}
 }
-
-
